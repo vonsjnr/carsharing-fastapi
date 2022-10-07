@@ -1,0 +1,128 @@
+[
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 1
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 2
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 3
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 4
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 5
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 6
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 7
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 8
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 9
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 0
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 0
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 0
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 13
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 14
+    },
+    {
+        "size": null,
+        "fuel": "diesel",
+        "doors": null,
+        "transmission": "manual",
+        "id": 15
+    },
+    {
+        "size": "string",
+        "fuel": "diesel",
+        "doors": 5,
+        "transmission": "manual",
+        "id": 16
+    },
+    {
+        "size": "string",
+        "fuel": "diesel",
+        "doors": 5,
+        "transmission": "manual",
+        "id": 17
+    },
+    {
+        "size": "string",
+        "fuel": "diesel",
+        "doors": 5,
+        "transmission": "manual2",
+        "id": 18
+    }
+]
