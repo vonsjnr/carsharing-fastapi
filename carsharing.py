@@ -1,45 +1,28 @@
-from typing import Optional
-
 import uvicorn
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Request
+from sqlmodel import SQLModel
 
-from schemas import load_db, save_db, CarInput, CarOutput
+from db import engine
+from schemas import load_db
+from routers import cars as crs
+from routers import web, auth
 
-app = FastAPI()
-db = load_db()
-
-
-@app.get("/api/cars")
-def get_cars(doors: Optional[int] = None, size: Optional[str] = None, transmission=None) -> list:
-    result = db
-    if size:
-        result = [car for car in db if car.size == size]
-    if doors:
-        result = [car for car in db if car.doors == doors]
-    if transmission:
-        result = [car for car in db if car.transmission == transmission]
-
-    return result
+app = FastAPI(title="Car Sharing")
+app.include_router(crs.router)
+app.include_router(web.router)
+app.include_router(auth.router)
 
 
-@app.get("/api/cars/{id}")
-def car_by_id(id: int = None):
-    result = [car for car in db if car.id == id]
-    if result:
-        return result[0]
-    else:
-        raise HTTPException(status_code=404, detail='No car with that id={}'.format(id))
+@app.on_event("startup")
+def on_startup():
+    SQLModel.metadata.create_all(engine)
 
-
-@app.post("/api/cars/")
-def add_car(car: CarInput) -> CarOutput:
-    new_car = CarOutput(size=car.size, doors=car.doors,
-                        fuel=car.fuel, transmission=car.transmission,
-                        id=len(db)+1)
-    db.append(new_car)
-    save_db(db)
-    return new_car
-
+'''
+@app.middleware("http")
+async def add_cars_cookie(request: Request, call_next):
+    response = await call_next(request)
+    response.set_cookie(key="cars_cookie", value="you_visited_the_carsharing_app")
+    return response'''
 
 if __name__ == "__main__":
     uvicorn.run("carsharing:app", reload=True)

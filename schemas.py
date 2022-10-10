@@ -1,14 +1,54 @@
 import json
 
+
+from passlib.context import CryptContext
 from pydantic import BaseModel
+from sqlmodel import SQLModel, Field, Column, VARCHAR, Integer
 from typing import Optional, List
 
 
-class CarInput(BaseModel):
-    size: str
+pwd_context = CryptContext(schemes=["bcrypt"])
+
+
+class UserOutput(SQLModel):
+    id: int
+    username: str
+
+
+class User(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    username: str = Field(sa_column=Column("username", VARCHAR, unique=True, index=True))
+    password_hash: str = ""
+
+    def set_password(self, password):
+        """Setting the passwords actually sets password_hash."""
+        self.password_hash = pwd_context.hash(password)
+
+    def verify_password(self, password):
+        """Verify given password by hashing and comparing to password_hash."""
+        return pwd_context.verify(password, self.password_hash)
+
+
+class CarInput(SQLModel):
+    size: Optional[str]
     fuel: Optional[str] = "diesel"
-    doors: int
+    doors: Optional[int]
     transmission: Optional[str] = "manual"
+    '''
+    class Config:
+        schema_extra = {
+            "example": {
+                "size": "m",
+                "doors": 5,
+                "transmission": "manual",
+                "fuel": "hybrid"
+            }
+        }
+        '''
+
+
+class Car(CarInput, table=True):
+    id: Optional[int] = Field(primary_key=True, default=None)
 
 
 class CarOutput(CarInput):

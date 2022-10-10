@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Carsharing Demo-Result</title>
+    </head>
+    <body>
+        <h1> Welcome, my friend! </h1>
+        <p>We found the following matching cars:</p>
+        <ul>
+            {% for car in cars %}
+            <li>
+                {{car}}
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
